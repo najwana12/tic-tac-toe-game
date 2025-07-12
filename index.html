@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicTacToe Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Popup pilih pemain di awal -->
+    <section id="startPopup">
+     <div class="popup-content">
+        <h2>Choose Your Player</h2>
+        <div class="start-buttons">
+         <button onclick="startGame('X')">Play as X</button>
+        <button onclick="startGame('O')">Play as O</button>
+     </div>
+    </div>
+    </section>
+
+
+  <main>
+    <!-- informasi giliran pemain -->
+    <header class="turn-container" aria-label="Player Turn Display">
+     <div class="turn-box" id="xPlayerDisplay">X</div>
+     <h3 id="titleHeader">X's Turn</h3>
+    <div class="turn-box" id="oPlayerDisplay">O</div>
+  </header>
+
+    <!-- Bagian papan permainan -->
+    <section id="game-board" aria-label="Game Board">
+    <div class="grid" id="board">
+      <div class="cell"></div> <!-- Sel papan permainan -->
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    </section>
+
+   <!-- Tombol restart -->
+    <footer>
+      <button id="restartBtn">Restart</button>
+    </footer>
+
+    <!-- Pop-up hasil permainan-->
+    <section id="popup" class="hidden">
+      <div class="popup-content">
+        <p id="popupMessage"></p>
+        <button id="closePopup">Close</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

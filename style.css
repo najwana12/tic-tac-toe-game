@@ -1,0 +1,232 @@
+/* Import font dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Reset margin dan padding untuk semua elemen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+  color: white;
+}
+
+body {
+  background: #0A0519; /* Mengatur latar belakang halaman */
+}
+
+/* Bagian utama biar konten selalu di tengah */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === TURN INDICATOR === */
+/* Bagian informasi giliran pemain */
+.turn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+
+/* Teks giliran siapa sekarang */
+.turn-container h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ccc;
+  margin: 0 10px;  /* Ngasih jarak kiri-kanan */
+}
+
+/* Kotak yang nampilin X dan O */
+.turn-box {
+  background: #17122A;
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 12px;
+  border: solid 4px #17122A;
+  opacity: 0.5;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* pas kursor diarahin, warnanya berubah */
+.turn-box:hover {
+  border-color: #2A2343;
+}
+
+/* Highlight buat pemain yang lagi giliran */
+.player-active {
+  opacity: 1;
+  border-color: #2A2343;
+}
+
+#xPlayerDisplay {
+  color: #1892EA;
+}
+
+#oPlayerDisplay {
+  color: #A737FF;
+}
+
+/* === BOARD === */
+/* Desain papan 3x3 kotak */
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  grid-template-rows: repeat(3, 70px);
+  gap: 12px;
+}
+
+/* Desain tiap kotak/sell */
+.cell {
+  background: #17122A;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s background;
+}
+
+.cell:hover {
+  background: #2A2343;
+}
+
+/* === RESTART BUTTON === */
+/* Tombol restart untuk mulai ulang permainan */
+#restartBtn {
+  margin-top: 30px;
+  width: 235px;
+  background: #17122A;
+  padding: 8px 0;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s background;
+  visibility: hidden;
+}
+
+#restartBtn:hover {
+  background: #2A2343;
+}
+
+/* === POPUPS === */
+#startPopup,
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 5, 25, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#startPopup.hidden,
+#popup.hidden {
+  display: none;
+}
+
+/* Kotak konten di dalam popup */
+.popup-content {
+  background-color: #2A2343;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.3s ease; /* Animasinya muncul perlahan */
+}
+
+.popup-content h2,
+.popup-content p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.start-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.start-buttons button,
+#closePopup {
+  background: #17122A;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start-buttons button:hover,
+#closePopup:hover {
+  background-color: #3A2D5B;
+}
+
+/* === ANIMATIONS === */
+/* Fade in untuk elemen yang muncul perlahan */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Efek muncul membesar di popup */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* === RESPONSIVE === */
+/* Responsif untuk layar kecil seperti HP */
+@media screen and (max-width: 480px) {
+  .turn-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .turn-box {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  #board {
+    gap: 8px;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+  }
+
+  #restartBtn {
+    width: 180px;
+  }
+}
